@@ -1,0 +1,33 @@
+{% extends "_layout.html" %}
+
+{% block content %}
+    <div class="form-wrapper">
+        <h1>Khai báo Pháp nhân (Publisher) mới</h1>
+        <form id="publisher-form">
+            <div class="form-group">
+                <label for="ten_phap_nhan">Tên pháp nhân</label>
+                <input type="text" id="ten_phap_nhan" name="ten_phap_nhan" required>
+            </div>
+            <div class="form-group">
+                <label for="ma_phap_nhan">Mã pháp nhân (Mã số thuế)</label>
+                <input type="text" id="ma_phap_nhan" name="ma_phap_nhan">
+            </div>
+            <div class="form-group">
+                <label for="client_code">Client Code (Tự định nghĩa)</label>
+                <input type="text" id="client_code" name="client_code" required>
+            </div>
+            <div class="form-group">
+                <label for="loai_phap_nhan">Loại pháp nhân</label>
+                <select id="loai_phap_nhan" name="loai_phap_nhan">
+                    <option value="CÔNG TY TNHH">CÔNG TY TNHH</option>
+                    <option value="CÔNG TY CỔ PHẦN">CÔNG TY CỔ PHẦN</option>
+                    <option value="CHI NHÁNH">CHI NHÁNH</option>
+                    <option value="NGÂN HÀNG">NGÂN HÀNG</option>
+                    <option value="KHÁC">Khác</option>
+                    <option value="NHÀ NƯỚC">NHÀ NƯỚC</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" id="submit-publisher-btn">Khai báo Pháp nhân</button>
+        </form>
+    </div>
+{% endblock %}

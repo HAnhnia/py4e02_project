@@ -1,0 +1,61 @@
+{% extends "_layout.html" %}
+
+{% block content %}
+<div id="manage-page-container">
+    <h1>Quản lý Dữ liệu</h1>
+    <p>Nhấn "Sửa" ở một hàng để thay đổi thông tin. Các cột ID (ID, PO ID, PN ID) không thể thay đổi.</p>
+    <p>
+        <a href="https://docs.google.com/spreadsheets/d/11v7fwIN2YtrEIq3eAT_duAz-SMUaUIfFm2PEJGzTftI/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer">
+            Link Google Sheet POM
+        </a>
+    </p>
+    
+    <div class="manage-grid">
+        <div class="table-wrapper">
+            <h2>Danh sách Pháp nhân (dim_publisher)</h2>
+            <div class="table-scroll">
+                <table id="publisher-table" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Mã PN</th>
+                            <th>Tên Pháp nhân</th>
+                            <th>Loại PN</th>
+                            <th>Client Code</th>
+                            <th>Sửa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="6">Đang tải...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <h2>Danh sách PO (pom)</h2>
+            <div class="table-scroll">
+                <table id="po-table" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>PO ID</th>
+                            <th>PN ID</th>
+                            <th>PO Code</th>
+                            <th style="text-align: right;">Giá trị</th>
+                            <th style="text-align: right;">Khả dụng</th>
+                            <th>Ngày tạo</th>
+                            <th>Trạng thái</th>
+                            <th>Loại SP</th>
+                            <th>Loại PO</th>
+                            <th>Sửa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="10">Đang tải...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

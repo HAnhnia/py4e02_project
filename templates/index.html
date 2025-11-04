@@ -1,0 +1,51 @@
+{% extends "_layout.html" %}
+
+{% block content %}
+    <h1>Dashboard Tổng quan</h1>
+
+    <div class="filter-container">
+        <form id="filter-form">
+            <div class="form-group">
+                <label for="start_date">Từ ngày</label>
+                <input type="date" id="start_date" name="start_date">
+            </div>
+            <div class="form-group">
+                <label for="end_date">Đến ngày</label>
+                <input type="date" id="end_date" name="end_date">
+            </div>
+            <div class="form-group">
+                <label for="loai_sp">Loại sản phẩm (chứa)</label>
+                <input type="text" id="loai_sp" name="loai_sp" placeholder="Vd: Voucher">
+            </div>
+            <div class="form-group">
+                <label for="ten_phap_nhan">Tên pháp nhân</label>
+                <input type="text" id="ten_phap_nhan" name="ten_phap_nhan" placeholder="Vd: Công ty A">
+            </div>
+            <div class="form-group-buttons">
+                <button type="submit" class="btn btn-primary">Áp dụng</button>
+                <button type="reset" class="btn" id="reset-filter-btn">Xóa lọc</button>
+            </div>
+        </form>
+    </div>
+    <div class="dashboard-grid">
+        <div class="chart-container full-width">
+            <h2>Doanh thu theo tháng</h2>
+            <img id="plot-monthly" src="/plot/monthly.png" alt="Biểu đồ doanh thu tháng">
+        </div>
+        <div class="chart-container">
+            <h2>Tỷ trọng theo Loại Sản phẩm</h2>
+            <img id="plot-campaign" src="/plot/campaign.png" alt="Biểu đồ tỷ trọng sản phẩm">
+        </div>
+        <div class="chart-container">
+            <h2>Phân tích Pareto/Segment RFM</h2>
+            <img id="plot-pareto" src="/plot/pareto.png" alt="Biểu đồ Pareto RFM">
+        </div>
+        
+        <div class="chart-container full-width">
+            <h2>Danh sách chi tiết phân loại pháp nhân (RFM) </h2>
+            <div id="rfm-detail-table-container" class="table-wrapper">
+                <p>Đang tải dữ liệu RFM...</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

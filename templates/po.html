@@ -1,0 +1,65 @@
+{% extends "_layout.html" %}
+
+{% block content %}
+    <div class="form-wrapper">
+        <h1>Khai báo Purchase Order (PO) mới</h1>
+        <form id="po-form">
+            <div class="form-group">
+                <label for="publisher-select">Chọn Pháp nhân (Publisher)</label>
+                <select id="publisher-select" name="id_phap_nhan" required>
+                    <option value="" disabled selected>Đang tải danh sách...</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="client_code_display">Client Code (Tự động)</label>
+                <input type="text" id="client_code_display" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="po_amount">Giá trị PO (VNĐ)</label>
+                <input type="number" id="po_amount" name="po_amount" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="po_available_amount">Giá trị Khả dụng (VNĐ)</label>
+                <input type="number" id="po_available_amount" name="po_available_amount" required>
+                <small>Thường bằng giá trị PO khi mới tạo.</small>
+            </div>
+
+        <div class="form-group">
+            <label for="loai_sp">Loại sản phẩm</label>
+            <select id="loai_sp" name="loai_sp">
+                <option value="Quà vật lý">Quà vật lý</option>
+                <option value="Voucher">Voucher</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="type_po">Loại PO</label>
+            <select id="type_po" name="type_po">
+                <option value="normal">PO thu tiền</option>
+                <option value="not-in-revenue">Không tính doanh thu</option>
+                <option value="testing">PO test</option>
+            </select>
+        </div>
+            
+            <div class="form-group">
+                <label for="po_status">Trạng thái</label>
+                <select id="po_status" name="po_status">
+                    <option value="Pending">Pending</option>
+                    <option value="Activate">Activate</option>
+                    <option value="Deactivate">Deactivate</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="po_code">Mã PO (Nếu có)</label>
+                <input type="text" id="po_code" name="po_code" placeholder="Tự động tạo nếu để trống">
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="submit-po-btn">Khai báo PO</button>
+        </form>
+    </div>
+{% endblock %}

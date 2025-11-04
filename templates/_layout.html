@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PO Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a class="nav-brand" href="/">TRANG QUẢN LÝ POM</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="/publisher">Khai báo Pháp nhân</a></li>
+                <li class="nav-item"><a href="/po">Khai báo PO</a></li>
+                <li class="nav-item"><a href="/manage">Quản lý Dữ liệu</a></li>
+                <li class="nav-item"><a href="/">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div id="message-container" class="message-container" aria-live="polite"></div>
+
+        {% block content %}{% endblock %}
+    </main>
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

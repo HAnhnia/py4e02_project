@@ -1,0 +1,417 @@
+/* Biến màu và cài đặt chung */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --bg-color: #f8f9fa; /* Giữ màu nền ban đầu */
+    --text-color: #333;
+    --border-color: #dee2e6;
+    --card-bg: #ffffff;
+    --success-color: #28a745;
+    --error-color: #dc3545;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding-top: 60px; /* Không gian cho navbar cố định */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    /* Khôi phục lại bố cục container ban đầu */
+    width: 90%; 
+    margin: 10px auto;
+    padding: 0 20px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary-color);
+    border-bottom: 5px solid var(--border-color); /* Giữ viền Navbar đậm */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-container {
+    /* THÊM: Cần max-width để nội dung không quá rộng trên màn hình lớn */
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px; /* Giữ chiều cao ban đầu */
+}
+
+.nav-brand {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--card-bg);
+    text-decoration: none;
+}
+
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-item a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--card-bg);
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-item a:hover,
+.nav-item a.active {
+    /* Đã khôi phục hiệu ứng hover/active ban đầu */
+    color: var(--border-color); 
+}
+
+/* Dashboard */
+.dashboard-grid {
+    /* SỬA ĐỔI: Thay vì 2 cột cố định, sử dụng auto-fit để linh hoạt hơn
+       hoặc tốt hơn: giữ 2 cột, nhưng điều chỉnh full-width cho phù hợp
+       TẠM THỜI GIỮ 2 CỘT NHƯ CŨ (để chart 2 và 3 ở 2 bên) */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Giữ layout 2 cột */
+    gap: 20px;
+}
+
+.chart-container {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color); /* Giữ viền đơn giản */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Giữ đổ bóng đơn giản */
+    /* THÊM: Đảm bảo chiều cao tối thiểu cho chart để container không bị lệch */
+    min-height: 350px; 
+}
+
+.chart-container.full-width {
+    grid-column: 1 / -1; 
+}
+
+
+.chart-container h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    /* THÊM: Căn giữa tiêu đề của chart */
+    text-align: center;
+}
+
+
+/* SỬA LỖI TRÀN: Điều chỉnh ảnh biểu đồ */
+.chart-container img {
+    /* QUAN TRỌNG: Giữ nguyên để fix lỗi tràn */
+    max-width: 100%; 
+    height: auto;
+    display: block; 
+    border: 1px solid var(--border-color); 
+    /* THÊM: margin top để tách khỏi tiêu đề */
+    margin-top: 15px; 
+}
+
+/* THÊM: Media Query để Chart tròn và Pareto gọn gàng hơn trên màn hình lớn */
+@media (min-width: 992px) {
+    .dashboard-grid {
+        /* Chuyển sang bố cục 2 cột chính cho màn hình lớn: 
+        Biểu đồ tròn (Tỷ trọng) và Pareto sẽ nằm cạnh nhau. */
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Đảm bảo biểu đồ doanh thu luôn ở trên cùng và full-width */
+    .chart-container.full-width:nth-child(1) {
+        grid-column: 1 / -1; 
+    }
+    
+    /* Thiết lập lại min-height để cân đối hơn trên màn hình lớn */
+     .chart-container {
+        min-height: 400px;
+     }
+
+     /* Chart Container cho Bảng RFM */
+     .chart-container.full-width:nth-child(4) {
+        min-height: auto; /* Bỏ min-height cho Bảng */
+     }
+}
+
+/* Forms */
+/* ... (Giữ nguyên phần Forms/Buttons/Messages) ... */
+.form-wrapper {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.form-wrapper h1 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"], /* Thêm type date */
+.form-group input[type="number"],
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Quan trọng */
+}
+
+.form-group input:disabled {
+    background-color: var(--bg-color);
+    cursor: not-allowed;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: var(--secondary-color);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn:disabled {
+    background-color: var(--secondary-color);
+    cursor: not-allowed;
+}
+
+/* Message Container */
+.message-container {
+    padding: 0;
+    margin: 0 0 20px 0;
+    list-style: none;
+}
+
+.message {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeIn 0.5s forwards;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- [PHẦN CSS CHO FILTER ĐÃ THÊM] --- */
+.filter-container {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#filter-form {
+    display: grid;
+    /* Dàn layout cho đẹp */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    align-items: flex-end; 
+}
+
+#filter-form .form-group {
+    margin-bottom: 0; 
+}
+
+.form-group-buttons {
+    display: flex;
+    gap: 10px;
+    align-self: flex-end; 
+    padding-bottom: 2px; 
+}
+
+#filter-form .btn {
+    width: auto;
+    padding: 12px 15px;
+}
+#filter-form .btn-primary {
+    width: 100%;
+}
+#filter-form button[type="reset"] {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* --- [PHẦN CSS MỚI CHO TRANG QUẢN LÝ] --- */
+.manage-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mặc định 1 cột */
+    gap: 20px;
+}
+
+/* 2 cột trên màn hình lớn */
+@media (min-width: 992px) {
+    .manage-grid {
+        grid-template-columns: 2fr 3fr;
+    }
+}
+
+.table-wrapper {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.table-wrapper h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    /* THÊM DÒNG SAU ĐỂ CĂN GIỮA TIÊU ĐỀ */
+    text-align: center; 
+}
+
+.table-scroll {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.data-table th,
+.data-table td {
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    text-align: left;
+    vertical-align: top;
+    white-space: normal; 
+
+}
+
+.data-table th {
+    background-color: var(--bg-color);
+    font-weight: 600;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
+
+/* Cột cuối cùng (actions) */
+.data-table td.actions {
+    white-space: nowrap;
+    width: 1%;
+    text-align: center;
+}
+
+.data-table .btn {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    margin: 0 2px;
+    width: auto;
+}
+
+.btn-edit {
+     background-color: var(--secondary-color);
+     color: #fff;
+}
+.btn-edit:hover {
+    background-color: #5a6268;
+}
+.btn-save {
+    background-color: var(--success-color);
+    color: #fff;
+}
+.btn-save:hover {
+    background-color: #218838;
+}
+.btn-cancel {
+    background-color: var(--error-color);
+    color: #fff;
+}
+.btn-cancel:hover {
+    background-color: #c82333;
+}
+
+/* Inputs bên trong bảng */
+.data-table input,
+.data-table select {
+     width: 100%;
+     padding: 6px;
+     border: 1px solid var(--primary-color);
+     border-radius: 4px;
+     font-size: 0.9rem;
+     box-sizing: border-box;
+     /* Đặt kích thước tối thiểu để không bị quá nhỏ */
+     min-width: 150px; 
+}
+
+.data-table input[type="number"] {
+    min-width: 100px;
+}
